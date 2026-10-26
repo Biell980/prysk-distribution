@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PRYSKB DISTRIBUTION — projeto de distribuição musical digital ligado à PRYSKB ENTERTAINMENT.">
+  <title>PRYSKB DISTRIBUTION — Music Beyond Boundaries</title>
+  <style>
+    :root {
+      --bg: #08090b;
+      --panel: #111317;
+      --panel-2: #171a20;
+      --text: #f5f6f8;
+      --muted: #a6abb5;
+      --silver: #d7dbe2;
+      --line: rgba(255,255,255,.13);
+      --accent: #aeb7c5;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 90%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(8,9,11,.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 900; letter-spacing: .12em; font-size: 1rem; }
+    .brand span { display: block; color: var(--muted); font-size: .62rem; letter-spacing: .32em; font-weight: 600; }
+    nav { display: flex; gap: 24px; align-items: center; font-size: .88rem; color: var(--muted); }
+    nav a:hover, .text-link:hover { color: white; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 20px; border: 1px solid var(--silver); border-radius: 4px;
+      background: var(--silver); color: #090a0c; font-weight: 800; font-size: .9rem;
+      transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); background: white; }
+    .button.secondary { background: transparent; color: var(--text); border-color: var(--line); }
+    .hero {
+      position: relative; overflow: hidden; padding: 110px 0 100px;
+      background: radial-gradient(ellipse at 78% 20%, rgba(165,177,198,.16), transparent 36%),
+                  linear-gradient(135deg, #08090b 20%, #12151b 100%);
+    }
+    .hero:after {
+      content: "P"; position: absolute; right: 4%; top: -115px; font-size: clamp(24rem, 48vw, 47rem);
+      font-weight: 900; line-height: 1; color: rgba(255,255,255,.025); pointer-events: none;
+    }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .25em; font-size: .75rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 6.5rem); line-height: .98; letter-spacing: -.06em; margin: 22px 0; max-width: 850px; }
+    h1 span { color: var(--silver); }
+    .hero p { max-width: 600px; color: var(--muted); font-size: 1.12rem; margin-bottom: 30px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .note { color: #818793; font-size: .78rem; margin-top: 22px; max-width: 670px; }
+    section { padding: 82px 0; }
+    .section-head { max-width: 700px; margin-bottom: 36px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; letter-spacing: -.04em; margin: 12px 0 16px; }
+    .section-head p, .card p, .about-copy { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: linear-gradient(145deg, var(--panel), #0d0f12); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
+    .num { font-size: .75rem; color: var(--accent); letter-spacing: .18em; font-weight: 800; }
+    .card h3 { font-size: 1.15rem; margin: 14px 0 8px; }
+    .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+    .visual-card {
+      min-height: 330px; border: 1px solid var(--line); border-radius: 8px; padding: 30px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: radial-gradient(circle at 80% 20%, rgba(215,219,226,.18), transparent 35%), linear-gradient(140deg,#191d24,#090a0c);
+    }
+    .monogram { font-size: clamp(5rem, 13vw, 10rem); line-height: .9; font-weight: 900; letter-spacing: -.1em; }
+    .visual-caption { font-size: .72rem; letter-spacing: .24em; color: var(--muted); }
+    .platforms { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .pill { border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px; color: var(--silver); font-size: .84rem; }
+    .banner { border: 1px solid var(--line); border-radius: 8px; padding: 38px; background: linear-gradient(120deg,#181c23,#0d0f12); display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    .banner h2 { max-width: 650px; margin-bottom: 8px; }
+    .banner p { color: var(--muted); margin: 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 6px; color: var(--silver); font-size: .88rem; }
+    input, select, textarea {
+      width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 4px;
+      background: #0e1014; color: var(--text); font: inherit;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .8rem; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .82rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; padding: 18px 0; flex-direction: column; gap: 14px; }
+      nav { width: 100%; gap: 16px; flex-wrap: wrap; font-size: .82rem; }
+      nav .button { padding: 9px 12px; }
+      .hero { padding: 80px 0 72px; }
+      section { padding: 62px 0; }
+      .grid, .about, .contact-grid { grid-template-columns: 1fr; }
+      .banner { align-items: flex-start; flex-direction: column; padding: 26px; }
+      .visual-card { min-height: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="PRYSKB Distribution início">PRYSKB <span>DISTRIBUTION</span></a>
+      <nav aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">O projeto</a>
+        <a href="#artistas">Artistas</a>
+        <a href="#contato" class="button">Fale conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div class="eyebrow">Uma nova visão para a música independente</div>
+        <h1>YOUR MUSIC.<br><span>YOUR NEXT MOVE.</span></h1>
+        <p>A PRYSKB DISTRIBUTION é um projeto de distribuição musical digital criado para organizar lançamentos, apoiar artistas independentes e construir novas possibilidades para a música.</p>
+        <div class="actions">
+          <a class="button" href="#sobre">Conheça o projeto <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#contato">Acompanhe a evolução</a>
+        </div>
+        <p class="note">Projeto em desenvolvimento. O envio de músicas às plataformas digitais dependerá de parcerias e de infraestrutura de distribuição autorizada.</p>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about">
+        <div class="visual-card" aria-label="Identidade visual provisória da PRYSKB Distribution">
+          <div class="visual-caption">PRYSKB ENTERTAINMENT PRESENTS</div>
+          <div class="monogram">P<span style="color:#aeb7c5">/</span>K</div>
+          <div class="visual-caption">MUSIC • ARTISTS • DISTRIBUTION</div>
+        </div>
+        <div>
+          <div class="eyebrow">Sobre a PRYSKB</div>
+          <h2>Feita para acompanhar a próxima geração de artistas.</h2>
+          <p class="about-copy">Ligada à PRYSKB ENTERTAINMENT, a PRYSKB DISTRIBUTION começa com o catálogo de Kemely Bennytt e tem como objetivo evoluir para um serviço que possa atender outros artistas no futuro.</p>
+          <p class="about-copy">A proposta é desenvolver a marca por etapas: presença digital, organização de lançamentos, ferramentas para artistas e, depois, uma estrutura profissional de distribuição.</p>
+          <div class="platforms" aria-label="Plataformas que fazem parte do objetivo futuro">
+            <span class="pill">Spotify</span><span class="pill">Apple Music</span><span class="pill">Deezer</span><span class="pill">YouTube Music</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">O projeto</div>
+          <h2>Uma base para cada etapa da carreira musical.</h2>
+          <p>Estas são as áreas planejadas para a evolução da PRYSKB DISTRIBUTION. A disponibilidade de cada serviço dependerá da implementação e das parcerias estabelecidas.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="num">01 / RELEASES</div>
+            <h3>Gestão de lançamentos</h3>
+            <p>Organização de singles, EPs e álbuns, incluindo títulos, créditos, capas e datas de lançamento.</p>
+          </article>
+          <article class="card">
+            <div class="num">02 / ARTISTS</div>
+            <h3>Espaço para artistas</h3>
+            <p>Uma futura área para cadastro de artistas, informações de perfil e acompanhamento dos lançamentos.</p>
+          </article>
+          <article class="card">
+            <div class="num">03 / ROYALTIES</div>
+            <h3>Relatórios e receitas</h3>
+            <p>Planejamento de relatórios de desempenho e receitas, conforme os dados fornecidos pelos parceiros de distribuição.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="artistas">
+      <div class="wrap">
+        <div class="banner">
+          <div>
+            <div class="eyebrow">Primeira artista do projeto</div>
+            <h2>Kemely Bennytt</h2>
+            <p>O catálogo de Kemely Bennytt será o ponto de partida para organizar e testar o fluxo de trabalho do projeto.</p>
+          </div>
+          <a class="button secondary" href="#contato">Entrar em contato</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="eyebrow">Contato</div>
+          <h2>Vamos construir o próximo capítulo.</h2>
+          <p class="about-copy">Quer acompanhar o desenvolvimento da PRYSKB DISTRIBUTION ou conversar sobre uma futura parceria? Use o formulário de demonstração ao lado.</p>
+          <p class="form-note">Este formulário é apenas visual e ainda não envia mensagens. Para receber contatos, será necessário conectá-lo a um serviço de formulários ou a um endereço de e-mail oficial.</p>
+        </div>
+        <form id="contactForm">
+          <label>Seu nome
+            <input name="name" type="text" placeholder="Como podemos chamar você?" required>
+          </label>
+          <label>Seu e-mail
+            <input name="email" type="email" placeholder="voce@exemplo.com" required>
+          </label>
+          <label>Assunto
+            <select name="subject">
+              <option>Quero saber mais sobre o projeto</option>
+              <option>Sou artista</option>
+              <option>Possível parceria</option>
+              <option>Outro assunto</option>
+            </select>
+          </label>
+          <label>Mensagem
+            <textarea name="message" placeholder="Escreva sua mensagem..."></textarea>
+          </label>
+          <button class="button" type="submit">Testar formulário</button>
+          <p class="form-note" id="formStatus" role="status">Nenhum dado será enviado ou armazenado por esta página de demonstração.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div><strong>PRYSKB DISTRIBUTION</strong> · A project by PRYSKB ENTERTAINMENT</div>
+      <div>© <span id="year"></span> PRYSKB. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('formStatus').textContent =
+        'Demonstração concluída: este formulário ainda não envia mensagens. Conecte um serviço de formulários antes de publicar.';
+    });
+  </script>
+</body>
+</html>
